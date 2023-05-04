@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>RandomQuoteGeneratorForTwitter</title>
+        <style>
+            #quote-box{
+                width: 1000px;
+                border: 3px solid green;
+                padding: 10px;
+                display: block;
+                margin: 20% auto;
+            }
+        </style>
+        <script>
+            const QuoteBank = [
+                {
+                    quote: "First they ignore you, then they laugh at you, then they fight you, then you win.",
+                    author: "Mahatma Gandhi"
+                }, {
+                    quote: "The greatest glory in living lies not in never falling, but in rising every time we fall.",
+                    author: 'Nelson Mandela'
+                }, {
+                    quote: "The way to get started is to quit talking and begin doing.",
+                    author: 'Walt Disney'
+                }, {
+                    quote: "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma – which is living with the results of other people's thinking.",
+                    author: 'Steve Jobs'
+                }, {
+                    quote: "If life were predictable it would cease to be life, and be without flavor.",
+                    author: 'Eleanor Roosevelt'
+                },
+                /* {
+                    quote: "",
+                    author: ''
+                } */
+            ]
+            window.onload = start;
+            function start(){
+                const RandomIndex = Math.floor(Math.random() * QuoteBank.length)
+                let twitter = "https://twitter.com/intent/tweet?hashtags=quotes" + " " +[...QuoteBank][RandomIndex].quote.replaceAll(" |, ", "%20") + " -" + [...QuoteBank][RandomIndex].author.replaceAll(" ", "%20");
+                document.getElementById("text").innerText = QuoteBank[RandomIndex].quote
+                document.getElementById("author").innerText =  "-" + QuoteBank[RandomIndex].author
+                document.getElementById("tweet-quote").href = twitter
+            }
+        </script>
+        
+    </head> 
+    <body>
+        <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+        <wrapper id="quote-box" class="card" style="width: 18rem;">
+            <div class="card-header">
+                Quote
+            </div>
+            <div class="card-body">
+            <blockquote blockquote mb-0>
+              <h2 id="text"  class="card-title"></h2>
+              <h3 id="author" class="card-text" class="blockquote-footer"></h3>
+            <div class="row">
+              <div calss="cols-xs-4">
+              <button id="new-quote" onClick="start()" class="btn btn-danger">Thank u next!</button>
+              </div>
+              <div class="cols-xs-4">
+              <a target="_blank" id="tweet-quote" clasS="btn btn-info">Tweet the code</a>
+              </div>
+            </div>
+            </blockquote>
+            </div>
+        </wrapper>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+    </body>
+</html> 
